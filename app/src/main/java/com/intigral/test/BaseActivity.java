@@ -2,7 +2,6 @@ package com.intigral.test;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import com.intigral.test.utils.Utils;
 

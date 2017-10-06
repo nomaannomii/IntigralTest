@@ -51,7 +51,6 @@ public class Result implements Serializable
     @SerializedName("release_date")
     @Expose
     private String releaseDate;
-    private final static long serialVersionUID = -3448079549773414826L;
 
     /**
      * No args constructor for use in serialization
