@@ -3,6 +3,7 @@ package com.intigral.test.retrofit;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.intigral.test.utils.Constants;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,7 +31,7 @@ public class RestClient {
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .build();
         builder = new Retrofit.Builder().
-                baseUrl(API_BASE_URL).
+                baseUrl(Constants.URL_BASE).
                 addConverterFactory(new ToStringConverterFactory()).
                 addConverterFactory(GsonConverterFactory.create(gson)).
                 addCallAdapterFactory(RxJavaCallAdapterFactory.create()).

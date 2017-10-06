@@ -2,4 +2,7 @@
     <string name="app_name">IntigralTest</string>
     <string name="check_internet_connection">please check internet connection</string>
     <string name="catalog">Catalog</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="revenue">Revenue</string>
 </resources>

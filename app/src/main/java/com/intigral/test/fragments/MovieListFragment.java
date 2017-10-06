@@ -1,4 +1,4 @@
-package com.intigral.test;
+package com.intigral.test.fragments;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,17 +8,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.intigral.test.ApplicationData;
+import com.intigral.test.R;
 import com.intigral.test.adapters.HorizontalAdapter;
-import com.intigral.test.fragments.BaseFragment;
 import com.intigral.test.modal.MovieModal;
 import com.intigral.test.modal.Result;
 import com.intigral.test.retrofit.NetworkInterface.NetworkGetServices;
-import com.intigral.test.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +28,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MovieListFragment extends BaseFragment implements AdapterView.OnItemClickListener {
+    private static String KEY_MOVIE_LIST_TYPE = "movie_list_type", KEY_TITLE ="title";
+
+
+
     private Activity activity;
     private String strCategoryTitle;
     private List<Result> horizontalList;
     private HorizontalAdapter horizontalAdapter;
+
+
+
 
     @BindView(R.id.ho)
     RecyclerView hRecyclerView;
@@ -42,7 +48,7 @@ public class MovieListFragment extends BaseFragment implements AdapterView.OnIte
 
     @BindView(R.id.category_title)
     TextView categoryTitle;
-    private int urlType;
+    private String movieListType;
 
     int page = 1;
     Call<MovieModal> movieModalCall;
@@ -60,17 +66,15 @@ public class MovieListFragment extends BaseFragment implements AdapterView.OnIte
         activity = getActivity();
         Bundle bundle = this.getArguments();
         strCategoryTitle = bundle.getString("title");
-        urlType = bundle.getInt("urlType");
+        movieListType = bundle.getString(KEY_MOVIE_LIST_TYPE);
         categoryTitle.setText(strCategoryTitle);
         horizontalList = new ArrayList<>();
         /*send call to server*/
-        if (urlType == 1) {
-            getMoviesData(page);
-        }
+        getMoviesData(page, movieListType);
     }
 
-    public void getMoviesData(int value) {
-        movieModalCall = ApplicationData.getRestClient().createService(NetworkGetServices.class).getMoviePayload(value);
+    public void getMoviesData(int page, String movieListType) {
+        movieModalCall = ApplicationData.getRestClient().createService(NetworkGetServices.class).getMoviePayload(page, movieListType);
         movieModalCall.enqueue(new Callback<MovieModal>() {
             @Override
             public void onResponse(Call<MovieModal> call, Response<MovieModal> response) {
@@ -97,7 +101,14 @@ public class MovieListFragment extends BaseFragment implements AdapterView.OnIte
             }
         });
     }
-
+    public static MovieListFragment newInstance(String movieListType, String title) {
+        MovieListFragment fragment = new MovieListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(KEY_MOVIE_LIST_TYPE, movieListType);
+        bundle.putString(KEY_TITLE, title);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
     private void setVisibility() {
         progressBar.setVisibility(View.GONE);
         hRecyclerView.setVisibility(View.VISIBLE);
@@ -110,7 +121,7 @@ public class MovieListFragment extends BaseFragment implements AdapterView.OnIte
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_category_movielist;
+        return R.layout.fragment_movielist;
     }
 
 

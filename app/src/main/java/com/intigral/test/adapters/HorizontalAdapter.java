@@ -7,10 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.intigral.test.MovieListActivity;
 import com.intigral.test.R;
-import com.intigral.test.SimpleHListActivity;
 import com.intigral.test.interfaces.OnMovieItemClickListener;
 import com.intigral.test.modal.Result;
+import com.intigral.test.utils.Constants;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.My
     public HorizontalAdapter(List<Result> resultList, Context activity) {
         this.resultList = resultList;
         this.context = activity;
-        itemClickListener = (SimpleHListActivity) activity;
+        itemClickListener = (MovieListActivity) activity;
 
     }
 
@@ -36,15 +37,16 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.My
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
+        // Load image from server
         Picasso.with(context)
-                .load("https://image.tmdb.org/t/p/w500" + resultList.get(position).getPosterPath())
+                .load(Constants.URL_BASE_IMAGE + resultList.get(position).getPosterPath())
                 .placeholder(R.drawable.ic_local_movies_black_24dp)
                 .into(holder.ivItem);
-
-
+        // Image click listner
         holder.ivItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Send call back to activity
                 itemClickListener.onMovieItemClick(resultList.get(position));
             }
         });
