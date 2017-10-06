@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import com.intigral.test.MovieListActivity;
 import com.intigral.test.R;
 import com.intigral.test.interfaces.OnMovieItemClickListener;
-import com.intigral.test.modal.Result;
+import com.intigral.test.modal.MovieItem;
 import com.intigral.test.utils.Constants;
 import com.squareup.picasso.Picasso;
 
@@ -18,11 +18,11 @@ import java.util.List;
 
 public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.MyViewHolder> {
 
-    private List<Result> resultList;
+    private List<MovieItem> resultList;
     private OnMovieItemClickListener itemClickListener;
     Context context;
 
-    public HorizontalAdapter(List<Result> resultList, Context activity) {
+    public HorizontalAdapter(List<MovieItem> resultList, Context activity) {
         this.resultList = resultList;
         this.context = activity;
         itemClickListener = (MovieListActivity) activity;

@@ -6,7 +6,7 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Result implements Serializable
+public class MovieItem implements Serializable
 {
 
     @SerializedName("vote_count")
@@ -56,7 +56,7 @@ public class Result implements Serializable
      * No args constructor for use in serialization
      * 
      */
-    public Result() {
+    public MovieItem() {
     }
 
     /**
@@ -76,7 +76,7 @@ public class Result implements Serializable
      * @param video
      * @param popularity
      */
-    public Result(Integer voteCount, Integer id, Boolean video, Double voteAverage, String title, Double popularity, String posterPath, String originalLanguage, String originalTitle, List<Integer> genreIds, String backdropPath, Boolean adult, String overview, String releaseDate) {
+    public MovieItem(Integer voteCount, Integer id, Boolean video, Double voteAverage, String title, Double popularity, String posterPath, String originalLanguage, String originalTitle, List<Integer> genreIds, String backdropPath, Boolean adult, String overview, String releaseDate) {
         super();
         this.voteCount = voteCount;
         this.id = id;

@@ -16,7 +16,7 @@ import com.intigral.test.ApplicationData;
 import com.intigral.test.R;
 import com.intigral.test.adapters.HorizontalAdapter;
 import com.intigral.test.modal.MovieModal;
-import com.intigral.test.modal.Result;
+import com.intigral.test.modal.MovieItem;
 import com.intigral.test.retrofit.NetworkInterface.NetworkGetServices;
 
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class MovieListFragment extends BaseFragment implements AdapterView.OnIte
 
     private Activity activity;
     private String strCategoryTitle;
-    private List<Result> horizontalList;
+    private List<MovieItem> horizontalList;
     private HorizontalAdapter horizontalAdapter;
 
 

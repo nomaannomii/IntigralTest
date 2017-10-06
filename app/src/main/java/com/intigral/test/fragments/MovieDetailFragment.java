@@ -4,27 +4,21 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.intigral.test.R;
-import com.intigral.test.modal.MovieModal;
-import com.intigral.test.modal.Result;
+import com.intigral.test.modal.MovieItem;
 import com.intigral.test.utils.Constants;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
-import retrofit2.Call;
 
 public class MovieDetailFragment extends BaseFragment  {
     public static String KEY_MOVIE_ITEM = "movie_item";
     private Activity activity;
-    private Result movie;
+    private MovieItem movie;
 
     @BindView(R.id.iv_movie_poster)
     ImageView ivPoster;
@@ -49,7 +43,7 @@ public class MovieDetailFragment extends BaseFragment  {
         activity = getActivity();
         Bundle bundle = this.getArguments();
         // Receive clicked movie fromparent
-        movie =(Result) bundle.getSerializable(KEY_MOVIE_ITEM);
+        movie =(MovieItem) bundle.getSerializable(KEY_MOVIE_ITEM);
 
 
         tvMovieName.setText(movie.getTitle());
@@ -61,7 +55,7 @@ public class MovieDetailFragment extends BaseFragment  {
             .placeholder(R.drawable.ic_local_movies_black_24dp)
             .into(ivPoster);
     }
-    public static MovieDetailFragment newInstance(Result movieItem) {
+    public static MovieDetailFragment newInstance(MovieItem movieItem) {
         MovieDetailFragment fragment = new MovieDetailFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable(KEY_MOVIE_ITEM, movieItem);

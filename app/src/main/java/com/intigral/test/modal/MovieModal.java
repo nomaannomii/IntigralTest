@@ -20,7 +20,7 @@ public class MovieModal implements Serializable {
     private Integer totalPages;
     @SerializedName("results")
     @Expose
-    private List<Result> results = null;
+    private List<MovieItem> results = null;
 
     /**
      * No args constructor for use in serialization
@@ -34,7 +34,7 @@ public class MovieModal implements Serializable {
      * @param page
      * @param totalPages
      */
-    public MovieModal(Integer page, Integer totalResults, Integer totalPages, List<Result> results) {
+    public MovieModal(Integer page, Integer totalResults, Integer totalPages, List<MovieItem> results) {
         super();
         this.page = page;
         this.totalResults = totalResults;
@@ -66,11 +66,11 @@ public class MovieModal implements Serializable {
         this.totalPages = totalPages;
     }
 
-    public List<Result> getResults() {
+    public List<MovieItem> getResults() {
         return results;
     }
 
-    public void setResults(List<Result> results) {
+    public void setResults(List<MovieItem> results) {
         this.results = results;
     }
 

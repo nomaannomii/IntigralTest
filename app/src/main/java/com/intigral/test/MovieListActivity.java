@@ -3,15 +3,12 @@ package com.intigral.test;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
 import com.intigral.test.fragments.MovieDetailFragment;
 import com.intigral.test.fragments.MovieListFragment;
 import com.intigral.test.interfaces.OnMovieItemClickListener;
-import com.intigral.test.modal.Result;
+import com.intigral.test.modal.MovieItem;
 import com.intigral.test.utils.Constants;
 
 import butterknife.BindView;
@@ -56,7 +53,7 @@ public class MovieListActivity extends BaseActivity implements OnMovieItemClickL
     }
 
     @Override
-    public void onMovieItemClick(Result item) {
+    public void onMovieItemClick(MovieItem item) {
        // Check if detail view exist in main activity then load detail fragment
         // in the same activity else start new activity
         if (findViewById(R.id.fl_movie_detail) != null) {

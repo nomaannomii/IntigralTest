@@ -1,8 +1,8 @@
 package com.intigral.test.interfaces;
 
-import com.intigral.test.modal.Result;
+import com.intigral.test.modal.MovieItem;
 
 public interface OnMovieItemClickListener {
-    void onMovieItemClick(Result item) ;
+    void onMovieItemClick(MovieItem item) ;
 }
 
