@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">IntigralTest</string>
+    <string name="check_internet_connection">please check internet connection</string>
+    <string name="catalog">Catalog</string>
 </resources>
